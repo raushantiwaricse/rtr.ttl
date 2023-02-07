@@ -1,31 +1,20 @@
 import "./App.css";
-import { useState, useMemo } from "react";
-import Student from "./Student";
+import User from "./User";
+import { useRef } from "react";
 function App() {
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(10);
-
-  const multiCountMemo = useMemo(
-    function multiple() {
-      console.log("rtr");
-      return count * 5;
-    },
-    [count]
-  );
-
+  let inputRef = useRef(null);
+  function update() {
+    inputRef.current.value = "1000";
+    inputRef.current.style.color = "blue";
+    inputRef.current.focus();
+  }
   return (
     <div className="App">
-      <h1>Count: {count}</h1>
-      <h1>data:{data}</h1>
-      <h1>{multiCountMemo}</h1>
-      <button type="button" onClick={() => setCount(count + 1)}>
-        count click me
+      <User ref={inputRef} />
+      <br />
+      <button type="button" onClick={update}>
+        Click mee!!
       </button>
-      &nbsp;
-      <button type="button" onClick={() => setData(data * 10)}>
-        Data click me
-      </button>
-      <Student />
     </div>
   );
 }

@@ -1,13 +1,9 @@
-import Student from "./Student";
-function User(props) {
- 
+import { forwardRef } from "react";
+function User(props,ref) {
   return (
     <>
-      {/* <button type="button" onClick={() => props.data(name)}>
-        Click me
-      </button> */}
-      <Student data1={props.data} />
+      <input type="text" ref={ref} />
     </>
   );
 }
-export default User;
+export default forwardRef(User);
