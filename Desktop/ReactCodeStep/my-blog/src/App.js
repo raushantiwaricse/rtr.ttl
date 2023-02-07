@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useMemo } from "react";
+import Student from "./Student";
 function App() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState(10);
@@ -24,6 +25,7 @@ function App() {
       <button type="button" onClick={() => setData(data * 10)}>
         Data click me
       </button>
+      <Student />
     </div>
   );
 }
