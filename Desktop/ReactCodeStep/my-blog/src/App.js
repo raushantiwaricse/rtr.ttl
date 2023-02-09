@@ -1,22 +1,21 @@
-import "./App.css";
-import User from "./User";
-import { useRef } from "react";
-function App() {
-  let inputRef = useRef(null);
-  function update() {
-    inputRef.current.value = "1000";
-    inputRef.current.style.color = "blue";
-    inputRef.current.focus();
-  }
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Home from "./component/Home";
+import About from "./component/About";
+import Navbar from "./component/Navbar";
+import PageNotFound from "./component/PageNotFound";
+import Users from "./component/Users";
+export default function App() {
   return (
     <div className="App">
-      <User ref={inputRef} />
-      <br />
-      <button type="button" onClick={update}>
-        Click mee!!
-      </button>
+      <BrowserRouter>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/*" element={<PageNotFound />} />
+          <Route path="/users/:name" element={<Users />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-
-export default App;
